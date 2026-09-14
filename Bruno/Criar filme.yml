@@ -1,0 +1,23 @@
+info:
+  name: Criar filme
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:5181/api/filme
+  body:
+    type: json
+    data: |-
+      {
+        "id": 3,
+        "titulo": "Interestelar"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

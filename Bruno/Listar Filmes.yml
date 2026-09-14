@@ -1,0 +1,16 @@
+info:
+  name: Listar Filmes
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:5181/api/filme
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
