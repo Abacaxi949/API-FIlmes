@@ -18,39 +18,71 @@ No terminal, dentro da pasta do projeto, execute:
 
 ```bash
 dotnet run
-URL local utilizada nos testes
+```
+
+## URL local utilizada nos testes
+
+```text
 http://localhost:5181
-Caso a porta seja diferente no seu computador, use a URL mostrada no terminal após executar dotnet run.
+```
 
-Endpoints
-Método	Rota	Descrição
-GET	/	Informa que a API está no ar.
-GET	/api/filme	Lista todos os filmes cadastrados.
-GET	/api/filme/{id}	Busca um filme pelo ID.
-POST	/api/filme	Cadastra um novo filme.
-PUT	/api/filme/{id}	Atualiza um filme pelo ID.
-DELETE	/api/filme/{id}	Remove um filme pelo ID.
+> Caso a porta seja diferente no seu computador, use a URL mostrada no terminal após executar `dotnet run`.
 
+## Endpoints
 
-Exemplo de POST
+| Método | Rota | Descrição |
+|---|---|---|
+| GET | `/` | Informa que a API está no ar. |
+| GET | `/api/filme` | Lista todos os filmes cadastrados. |
+| GET | `/api/filme/{id}` | Busca um filme pelo ID. |
+| POST | `/api/filme` | Cadastra um novo filme. |
+| PUT | `/api/filme/{id}` | Atualiza um filme pelo ID. |
+| DELETE | `/api/filme/{id}` | Remove um filme pelo ID. |
+
+## Exemplo de POST
+
 Rota:
+
+```text
 POST http://localhost:5181/api/filme
+```
+
 JSON enviado:
+
+```json
 {
   "titulo": "Interestelar"
 }
-Exemplo de PUT
+```
+
+## Exemplo de PUT
+
 Rota:
+
+```text
 PUT http://localhost:5181/api/filme/1
+```
+
 JSON enviado:
+
+```json
 {
   "titulo": "Interestelar - Edição Especial"
 }
-Dados em memória
-Os dados da API são armazenados em uma List<FilmeDto> na memória.
+```
+
+## Dados em memória
+
+Os dados da API são armazenados em uma `List<FilmeDto>` na memória.
+
 Por isso, todos os filmes cadastrados são perdidos quando a aplicação é parada ou reiniciada.
-Collection de testes
-A Collection utilizada nos testes está disponível na pasta bruno/ deste repositório.
-Vídeo de demonstração
-🟨 COLE AQUI O LINK PÚBLICO DO SEU VÍDEO:
-🟨 CLIQUE AQUI PARA ASSISTIR AO VÍDEO
+
+## Collection de testes
+
+A Collection utilizada nos testes está disponível na pasta `bruno/` deste repositório.
+
+## Vídeo de demonstração
+
+🟨 **COLE AQUI O LINK PÚBLICO DO SEU VÍDEO:**
+
+🟨 [CLIQUE AQUI PARA ASSISTIR AO VÍDEO](COLE_AQUI_O_LINK_DO_VIDEO)
