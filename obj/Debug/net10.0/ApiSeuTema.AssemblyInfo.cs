@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiSeuTema")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51216cf796a3bc91ebd730b86c77ed215d1eb0aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e744d041954df3e3ad4b2279b72372a63330aab6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiSeuTema")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiSeuTema")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
