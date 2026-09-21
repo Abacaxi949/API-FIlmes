@@ -85,4 +85,4 @@ A Collection utilizada nos testes está disponível na pasta `bruno/` deste repo
 
 🟨 **COLE AQUI O LINK PÚBLICO DO SEU VÍDEO:**
 
-🟨 [CLIQUE AQUI PARA ASSISTIR AO VÍDEO](COLE_AQUI_O_LINK_DO_VIDEO)
+🟨 [CLIQUE AQUI PARA ASSISTIR AO VÍDEO](https://drive.google.com/file/d/1AMS9WVXIVkeLPs1XQr0jKTQJvvd9aG7W/view?usp=sharing)
