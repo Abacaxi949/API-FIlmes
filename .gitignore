@@ -1,2 +1,8 @@
 bin/
 obj/
+*.db
+*.db-shm
+*.db-wal
+.dotnet-home/
+.appdata/
+.nuget/

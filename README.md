@@ -1,88 +1,45 @@
-# API de Filmes
+# API de Filmes — AP2
 
-## Tema e objetivo
+Evolução da API da AP1 para uma locadora de filmes. O backend é uma Minimal API em ASP.NET Core/.NET 10, com Entity Framework Core e SQLite. A interface em `wwwroot` é servida pela mesma origem da API e usa os endpoints reais.
 
-Esta é uma Minimal API de uma locadora de filmes, desenvolvida em ASP.NET Core e .NET 10.
-
-O objetivo da API é permitir cadastrar, listar, consultar, atualizar e remover filmes.
-
-O objeto principal da API é o filme, que possui um ID e um título.
-
-## Requisito
+## Requisitos e execução
 
 - .NET SDK 10.0
+- Bruno (opcional, para executar a Collection)
 
-## Como executar o projeto
-
-No terminal, dentro da pasta do projeto, execute:
+Na pasta do projeto:
 
 ```bash
+dotnet restore
 dotnet run
 ```
 
-## URL local utilizada nos testes
+Na inicialização, as migrations criam/atualizam `filmes.db` na pasta do projeto. O banco local é ignorado pelo Git. Acesse no navegador a URL exibida pelo `dotnet run` para abrir a interface. Ela permite cadastrar, listar, editar e excluir filmes.
 
-```text
-http://localhost:5181
-```
+## Organização
 
-> Caso a porta seja diferente no seu computador, use a URL mostrada no terminal após executar `dotnet run`.
+- `Models/Filme.cs`: entidade com `Id` e `Titulo`.
+- `Data/FilmesDbContext.cs`: contexto e conjunto EF Core.
+- `Migrations/`: migration inicial do SQLite.
+- `wwwroot/`: interface web.
+- `Bruno/`: Collection das chamadas da API.
 
-## Endpoints
+## Rotas
 
-| Método | Rota | Descrição |
+| Método | Rota | Resultado |
 |---|---|---|
-| GET | `/` | Informa que a API está no ar. |
-| GET | `/api/filme` | Lista todos os filmes cadastrados. |
-| GET | `/api/filme/{id}` | Busca um filme pelo ID. |
-| POST | `/api/filme` | Cadastra um novo filme. |
-| PUT | `/api/filme/{id}` | Atualiza um filme pelo ID. |
-| DELETE | `/api/filme/{id}` | Remove um filme pelo ID. |
+| GET | `/api/filme` | 200 e coleção |
+| GET | `/api/filme/{id}` | 200 ou 404 |
+| POST | `/api/filme` | 201 |
+| PUT | `/api/filme/{id}` | 200 ou 404 |
+| DELETE | `/api/filme/{id}` | 204 ou 404 |
 
-## Exemplo de POST
+POST e PUT recebem, por exemplo, `{"titulo":"Interestelar"}`. O ID é gerado pelo banco.
 
-Rota:
+## Collection Bruno
 
-```text
-POST http://localhost:5181/api/filme
-```
+Abra `Bruno/` no Bruno. A Collection usa `http://localhost:5181`; ajuste a URL para a porta mostrada no terminal, se necessário. Em um banco recém-criado, execute POST, GET coleção, GET por ID, PUT, DELETE e por último `Consultar filme excluído (404)`, que consulta o ID 1 criado pelo POST.
 
-JSON enviado:
+## Vídeo de demonstração — AP2
 
-```json
-{
-  "titulo": "Interestelar"
-}
-```
-
-## Exemplo de PUT
-
-Rota:
-
-```text
-PUT http://localhost:5181/api/filme/1
-```
-
-JSON enviado:
-
-```json
-{
-  "titulo": "Interestelar - Edição Especial"
-}
-```
-
-## Dados em memória
-
-Os dados da API são armazenados em uma `List<FilmeDto>` na memória.
-
-Por isso, todos os filmes cadastrados são perdidos quando a aplicação é parada ou reiniciada.
-
-## Collection de testes
-
-A Collection utilizada nos testes está disponível na pasta `bruno/` deste repositório.
-
-## Vídeo de demonstração
-
-🟨 **COLE AQUI O LINK PÚBLICO DO SEU VÍDEO:**
-
-🟨 [CLIQUE AQUI PARA ASSISTIR AO VÍDEO](https://drive.google.com/file/d/1AMS9WVXIVkeLPs1XQr0jKTQJvvd9aG7W/view?usp=sharing)
+Link público do vídeo: **pendente de gravação/publicação**. Atualize esta seção com o link público da demonstração AP2 e verifique o acesso em janela anônima.

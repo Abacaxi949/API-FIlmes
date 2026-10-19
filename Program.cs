@@ -1,60 +1,50 @@
-using Microsoft.AspNetCore.Builder;
-using System.Collections.Generic;
+using ApiSeuTema.Data;
+using ApiSeuTema.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var dbPath = Path.Combine(builder.Environment.ContentRootPath, "filmes.db");
+builder.Services.AddDbContext<FilmesDbContext>(options => options.UseSqlite($"Data Source={dbPath}"));
 var app = builder.Build();
 
-var filmes = new List<FilmeDto>
+using (var scope = app.Services.CreateScope())
+    scope.ServiceProvider.GetRequiredService<FilmesDbContext>().Database.Migrate();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.MapGet("/", () => Results.Redirect("/index.html"));
+var api = app.MapGroup("/api/filme");
+api.MapGet("/", async (FilmesDbContext db) => Results.Ok(await db.Filmes.AsNoTracking().OrderBy(f => f.Id).ToListAsync()));
+api.MapGet("/{id:int}", async (int id, FilmesDbContext db) =>
 {
-    new FilmeDto(1, "O Poderoso Chefão"),
-    new FilmeDto(2, "De Volta para o Futuro")
-};
-
-app.MapGet("/", () => "Locadora de filmes: atendimento até 21h30.");
-
-app.MapGet("/api/filme", () => Results.Ok(filmes));
-
-app.MapGet("/api/filme/{id:int}", (int id) =>
-{
-    var filme = filmes.Find(f => f.Id == id);
+    var filme = await db.Filmes.AsNoTracking().FirstOrDefaultAsync(f => f.Id == id);
     return filme is null ? Results.NotFound() : Results.Ok(filme);
 });
-
-app.MapPost("/api/filme", (FilmeEntradaDto dados) =>
+api.MapPost("/", async (FilmeEntradaDto dados, FilmesDbContext db) =>
 {
-    int proximoId = filmes.Count + 1;
-    var novoFilme = new FilmeDto(proximoId, dados.Titulo);
-    filmes.Add(novoFilme);
-
-    return Results.Created($"/api/filme/{novoFilme.Id}", novoFilme);
+    if (string.IsNullOrWhiteSpace(dados.Titulo)) return Results.BadRequest(new { erro = "O título é obrigatório." });
+    var filme = new Filme { Titulo = dados.Titulo.Trim() };
+    db.Filmes.Add(filme);
+    await db.SaveChangesAsync();
+    return Results.Created($"/api/filme/{filme.Id}", filme);
 });
-
-app.MapPut("/api/filme/{id:int}", (int id, FilmeEntradaDto dados) =>
+api.MapPut("/{id:int}", async (int id, FilmeEntradaDto dados, FilmesDbContext db) =>
 {
-    int indice = filmes.FindIndex(filmeDaLista => filmeDaLista.Id == id);
-    if (indice == -1)
-    {
-        return Results.NotFound();
-    }
-
-    var FilmeAtualizado = new FilmeDto(id, dados.Titulo);
-    filmes[indice] = FilmeAtualizado;
-    return Results.Ok(FilmeAtualizado);
+    var filme = await db.Filmes.FindAsync(id);
+    if (filme is null) return Results.NotFound();
+    if (string.IsNullOrWhiteSpace(dados.Titulo)) return Results.BadRequest(new { erro = "O título é obrigatório." });
+    filme.Titulo = dados.Titulo.Trim();
+    await db.SaveChangesAsync();
+    return Results.Ok(filme);
 });
-
-app.MapDelete("/api/filme/{id:int}", (int id) =>
+api.MapDelete("/{id:int}", async (int id, FilmesDbContext db) =>
 {
-    int indice = filmes.FindIndex(filmeDaLista => filmeDaLista.Id == id);
-    if (indice == -1)
-    {
-        return Results.NotFound();
-    }
-
-    filmes.RemoveAt(indice);
+    var filme = await db.Filmes.FindAsync(id);
+    if (filme is null) return Results.NotFound();
+    db.Filmes.Remove(filme);
+    await db.SaveChangesAsync();
     return Results.NoContent();
 });
-
 app.Run();
 
-record FilmeDto(int Id, string Titulo);
 record FilmeEntradaDto(string Titulo);
