@@ -42,4 +42,4 @@ Abra `Bruno/` no Bruno. A Collection usa `http://localhost:5181`; ajuste a URL p
 
 ## Vídeo de demonstração — AP2
 
-Link público do vídeo: **pendente de gravação/publicação**. Atualize esta seção com o link público da demonstração AP2 e verifique o acesso em janela anônima.
+Link público do vídeo: https://drive.google.com/file/d/173Vrc_NDoqkahCPRKQJw7aYWbKYWj27B/view?usp=sharing
