@@ -1,5 +1,6 @@
 using ApiSeuTema.Data;
 using ApiSeuTema.Dtos;
+using ApiSeuTema.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
