@@ -1,0 +1,11 @@
+meta {
+  name: Excluir filme
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/api/filme/{{filmeId}}
+  body: none
+  auth: none
+}
