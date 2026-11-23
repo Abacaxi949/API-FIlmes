@@ -93,5 +93,5 @@ Para demonstrar a persistência, execute **Criar filme para teste de persistênc
 
 ## Vídeo de demonstração — AS
 
-**Link público:** https://drive.google.com/file/d/1-lUmK_KVspALiU2kT78jrYL9tJIIgH6F/view?usp=sharing
+**Link público:** https://drive.google.com/file/d/1_z2o5o_cNertGAR5J4CpK5y4pkx715Td/view?usp=sharing
 
