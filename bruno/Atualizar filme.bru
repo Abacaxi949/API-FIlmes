@@ -1,0 +1,17 @@
+meta {
+  name: Atualizar filme
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api/filme/{{filmeId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "titulo": "Interestelar — edição atualizada"
+  }
+}
