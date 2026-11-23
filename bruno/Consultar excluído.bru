@@ -1,0 +1,11 @@
+meta {
+  name: Consultar filme excluído (404)
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/filme/{{filmeId}}
+  body: none
+  auth: none
+}
