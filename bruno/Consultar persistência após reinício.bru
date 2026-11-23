@@ -1,0 +1,11 @@
+meta {
+  name: Consultar filme após reiniciar a API
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api/filme/{{filmeId}}
+  body: none
+  auth: none
+}
