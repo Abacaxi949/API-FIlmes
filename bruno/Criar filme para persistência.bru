@@ -1,0 +1,22 @@
+meta {
+  name: Criar filme para teste de persistência
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api/filme
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "titulo": "Filme de teste de persistência"
+  }
+}
+
+script:post-response {
+  const filme = res.getBody();
+  bru.setEnvVar("filmeId", String(filme.id));
+}
