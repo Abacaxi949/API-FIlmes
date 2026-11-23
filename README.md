@@ -93,5 +93,5 @@ Para demonstrar a persistência, execute **Criar filme para teste de persistênc
 
 ## Vídeo de demonstração — AS
 
-**Link público:** pendente de gravação e publicação do vídeo específico da Avaliação Semestral. Após publicar, substitua esta linha pelo link que abra sem solicitar permissão.
+**Link público:** https://drive.google.com/file/d/1-lUmK_KVspALiU2kT78jrYL9tJIIgH6F/view?usp=sharing
 
