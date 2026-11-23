@@ -1,0 +1,11 @@
+meta {
+  name: Consultar filme pelo ID retornado
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/filme/{{filmeId}}
+  body: none
+  auth: none
+}
